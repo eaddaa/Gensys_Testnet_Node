@@ -137,4 +137,44 @@ Bu sefer farklı bir e-posta adresiyle giriş yap.
 
 Bu işlem, Node ID'ni yeni bir EVM adresine bağlamana yardımcı olur.
 
+💾 Sanal RAM (Swap) Artırımı
 
+# 20 GB swap için
+``````
+sudo fallocate -l 20G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+``````
+🔧 Swap Durumunu Kontrol Et
+``````
+free -h
+``````
+``````
+htop
+``````
+
+🚫 Swap’i Geçici Olarak Kapatmak
+``````
+sudo swapoff -a
+``````
+❌ Swap’i Kalıcı Olarak Kapatmak
+fstab dosyasını düzenle:
+İçinde şu satırı bul:
+``````
+/swapfile none swap sw 0 0
+``````
+Bu satırın başına # koyarak yorum satırı yap (veya tamamen sil):
+``````
+# /swapfile none swap sw 0 0
+``````
+Dosyayı kaydet ve çık
+Swap’i tekrar kapat:
+``````
+sudo swapoff -a
+``````
+🧹 (İsteğe Bağlı) Swap Dosyasını Tamamen Silmek
+Eğer swap dosyasına artık hiç ihtiyacın olmayacaksa:
+``````
+sudo rm /swapfile
+``````
